@@ -49,8 +49,10 @@ class CompanyController extends Controller
            $company = Company::find($request->id);
            \Storage::delete(['public/'. $company->logo]);
            $imagePath = $request->file('logo');
-           $imageName = $imagePath->getClientOriginalName();
-           $path = $request->file('logo')->storeAs('uploads', $imageName, 'public');
+           if($imageName){
+                $imageName = $imagePath->getClientOriginalName();
+                $path = $request->file('logo')->storeAs('uploads', $imageName, 'public');
+           }
         }
         else{
             $company = new Company;

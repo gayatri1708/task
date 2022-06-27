@@ -69,7 +69,9 @@
                             <input type="file" name="logo" class="form-control" placeholder="image">
                         @else
                             <input type="file" name="logo" class="form-control" placeholder="image">
-                            <img src="{{asset('storage/uploads/'.$company->logo) }}" width="100px" height ="100px">
+                            @if($company->logo)
+                                <img src="{{asset('storage/uploads/'.$company->logo) }}" width="100px" height ="100px">
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -82,7 +84,7 @@
                         @if($option == 'isAdd')
                             {{  Form::text('website', null, array('class' => 'form-control','placeholder' => 'Website'))  }} 
                         @else
-                            {{  Form::text('website', $company->email, array('class' => 'form-control','placeholder' => 'Website'))  }} 
+                            {{  Form::text('website', $company->website, array('class' => 'form-control','placeholder' => 'Website'))  }} 
                         @endif
                     </div>
                 </div>
